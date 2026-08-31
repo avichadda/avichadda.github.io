@@ -440,7 +440,6 @@ h1 {
 }
 
 .principle-list article {
-  min-height: 330px;
   padding: 24px;
   border-right: 1px solid var(--ink);
   display: flex;
@@ -452,7 +451,7 @@ h1 {
 }
 
 .principle-list h3 {
-  margin: auto 0 18px;
+  margin: 48px 0 14px;
   font-size: clamp(25px, 2.5vw, 36px);
   line-height: 1.05;
 }
@@ -658,7 +657,6 @@ footer div {
   }
 
   .principle-list article {
-    min-height: 240px;
     border-right: 0;
     border-bottom: 1px solid var(--ink);
   }
