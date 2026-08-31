@@ -214,7 +214,9 @@ h1 {
   padding: 14px;
   border: 1px solid var(--ink);
   background: var(--acid);
-  transform: rotate(2deg);
+  rotate: 2deg;
+  translate: 0 var(--parallax-y, 0);
+  will-change: translate;
 }
 
 .portrait-wrap img {
@@ -360,6 +362,8 @@ h1 {
   display: block;
   overflow: hidden;
   background: var(--white);
+  translate: 0 var(--parallax-y, 0);
+  will-change: translate;
 }
 
 .project-visual img {
@@ -590,6 +594,11 @@ footer div {
 }
 
 @media (max-width: 640px) {
+  .portrait-wrap,
+  .project-visual {
+    translate: none;
+  }
+
   .site-header {
     min-height: 72px;
     padding-block: 18px;
@@ -716,5 +725,10 @@ footer div {
   .reveal {
     opacity: 1;
     transform: none;
+  }
+
+  .portrait-wrap,
+  .project-visual {
+    translate: none;
   }
 }
