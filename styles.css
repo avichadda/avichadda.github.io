@@ -509,9 +509,25 @@ h1 {
   font-size: 20px;
 }
 
+.connect-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
 .connect .button {
   flex: 0 0 auto;
   color: var(--ink);
+}
+
+.connect .button-secondary {
+  border-color: var(--paper);
+  color: var(--paper);
+}
+
+.connect .button-secondary:hover {
+  box-shadow: 4px 4px 0 var(--paper);
 }
 
 footer {
@@ -694,6 +710,11 @@ footer div {
 
   .connect-row {
     align-items: stretch;
+    flex-direction: column;
+  }
+
+  .connect-actions {
+    width: 100%;
     flex-direction: column;
   }
 
