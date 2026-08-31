@@ -438,16 +438,16 @@ h1 {
 
 .all-work {
   margin-top: 80px;
-  padding: 24px 4px;
+  padding: 24px 10px;
   border-block: 1px solid var(--ink);
   display: flex;
   justify-content: space-between;
   font-size: clamp(20px, 2.3vw, 30px);
-  transition: padding-inline 180ms ease, background-color 180ms ease;
+  transition: background-color 180ms ease, padding-inline 180ms ease;
 }
 
 .all-work:hover {
-  padding-inline: 18px;
+  padding-inline: 20px;
   background: var(--acid);
 }
 
