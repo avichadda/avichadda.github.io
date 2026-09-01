@@ -1,0 +1,55 @@
+name: Portfolio issue
+description: Report a problem or suggest an improvement to the portfolio.
+title: "[Issue]: "
+labels: []
+body:
+  - type: dropdown
+    id: type
+    attributes:
+      label: Issue type
+      options:
+        - Bug
+        - Content correction
+        - Improvement
+        - Accessibility
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Explain what is wrong or what should change.
+      placeholder: Describe the issue and the expected result.
+    validations:
+      required: true
+
+  - type: input
+    id: page
+    attributes:
+      label: Page or section
+      description: Share the URL or name of the affected section.
+      placeholder: https://avichadda.github.io/#work
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: For bugs, list the shortest steps that reproduce the problem.
+      placeholder: |
+        1. Open the portfolio
+        2. Scroll to...
+        3. Observe...
+
+  - type: input
+    id: environment
+    attributes:
+      label: Browser and device
+      description: For visual or interaction issues, include your browser and device.
+      placeholder: Safari 19 on iPhone 16
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Add screenshots, links, or any other useful details.
