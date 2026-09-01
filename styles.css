@@ -792,6 +792,10 @@ footer div {
 }
 
 @media (max-width: 900px) {
+  .site-header nav {
+    display: none;
+  }
+
   .scroll-story-stage {
     grid-template-columns: minmax(0, 1fr) minmax(260px, .7fr);
   }
@@ -881,7 +885,8 @@ footer div {
     padding-block: 18px;
   }
 
-  nav {
+  .site-header nav {
+    display: flex;
     gap: 16px;
   }
 
@@ -889,7 +894,7 @@ footer div {
     font-size: 11px;
   }
 
-  .header-actions {
+  .header-actions .header-link:not(.header-sponsor) {
     display: none;
   }
 
