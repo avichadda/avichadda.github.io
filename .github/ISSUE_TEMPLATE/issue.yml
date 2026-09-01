@@ -3,6 +3,10 @@ description: Report a problem or suggest an improvement to the portfolio.
 title: "[Issue]: "
 labels: []
 body:
+  - type: markdown
+    attributes:
+      value: For private or direct inquiries, [email me](mailto:chaddaavi@gmail.com).
+
   - type: dropdown
     id: type
     attributes:
