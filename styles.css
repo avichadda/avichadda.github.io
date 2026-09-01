@@ -107,7 +107,7 @@ footer a:hover,
 }
 
 main {
-  overflow: hidden;
+  overflow: clip;
 }
 
 .hero,
@@ -257,6 +257,164 @@ h1 {
 
 @keyframes ticker {
   to { transform: translateX(-50%); }
+}
+
+.scroll-story {
+  position: relative;
+  height: 400vh;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.scroll-story-stage {
+  position: sticky;
+  top: 0;
+  width: min(100%, var(--max-width));
+  min-height: 100vh;
+  min-height: 100svh;
+  margin: 0 auto;
+  padding: clamp(64px, 8vw, 112px) var(--page-padding);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.72fr);
+  align-items: center;
+  gap: clamp(40px, 8vw, 120px);
+  overflow: hidden;
+}
+
+.scroll-story-copy {
+  position: relative;
+  z-index: 2;
+}
+
+.scroll-story-copy .section-label {
+  margin-bottom: 30px;
+  color: var(--acid);
+}
+
+.scroll-story h2 {
+  position: relative;
+  height: clamp(80px, 9vw, 130px);
+  margin: 0;
+  font-size: clamp(70px, 11vw, 158px);
+  line-height: 0.82;
+  letter-spacing: 0;
+}
+
+.story-word {
+  position: absolute;
+  inset: 0 auto auto 0;
+  opacity: 0;
+  transform: translateY(55%) rotate(2deg);
+  transition: opacity 420ms ease, transform 650ms cubic-bezier(.2,.7,.2,1);
+  white-space: nowrap;
+}
+
+.story-word.is-active {
+  opacity: 1;
+  transform: translateY(0) rotate(0);
+}
+
+.story-notes {
+  position: relative;
+  width: min(100%, 590px);
+  min-height: 96px;
+  margin-top: 44px;
+}
+
+.story-note {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  color: #aaa89f;
+  font-size: clamp(18px, 1.7vw, 24px);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 350ms ease, transform 500ms cubic-bezier(.2,.7,.2,1);
+}
+
+.story-note.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.story-portrait {
+  position: relative;
+  width: min(35vw, 470px);
+  aspect-ratio: 1;
+  justify-self: end;
+  isolation: isolate;
+  transform: scale(var(--story-scale, .78)) rotate(var(--story-rotate, -4deg));
+  transition: transform 100ms linear;
+}
+
+.story-portrait::before {
+  content: "";
+  position: absolute;
+  inset: 4%;
+  z-index: -1;
+  background: var(--acid);
+  transform: rotate(7deg);
+}
+
+.story-portrait img {
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--paper);
+  object-fit: cover;
+}
+
+.story-orbit {
+  position: absolute;
+  z-index: -2;
+  border: 1px solid rgba(242, 239, 229, .35);
+  border-radius: 50%;
+}
+
+.story-orbit-one {
+  inset: -16%;
+  transform: rotate(18deg) scaleX(.78);
+}
+
+.story-orbit-two {
+  inset: -31%;
+  border-color: rgba(185, 245, 61, .35);
+  transform: rotate(-22deg) scaleY(.72);
+}
+
+.story-index {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  padding: 8px 10px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: "DM Mono", monospace;
+  font-size: 12px;
+}
+
+.story-index b {
+  color: var(--acid);
+  font-weight: 500;
+}
+
+.story-progress {
+  position: absolute;
+  right: var(--page-padding);
+  bottom: 34px;
+  left: var(--page-padding);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.story-progress span {
+  height: 2px;
+  background: rgba(242, 239, 229, .22);
+  transition: background-color 300ms ease;
+}
+
+.story-progress span.is-active {
+  background: var(--acid);
 }
 
 .section {
@@ -560,6 +718,14 @@ footer div {
 }
 
 @media (max-width: 900px) {
+  .scroll-story-stage {
+    grid-template-columns: minmax(0, 1fr) minmax(260px, .7fr);
+  }
+
+  .story-portrait {
+    width: min(38vw, 360px);
+  }
+
   .hero {
     grid-template-columns: 1fr;
   }
@@ -609,6 +775,35 @@ footer div {
 }
 
 @media (max-width: 640px) {
+  .scroll-story {
+    height: auto;
+  }
+
+  .scroll-story-stage {
+    position: relative;
+    min-height: auto;
+    padding-block: 88px;
+    grid-template-columns: 1fr;
+  }
+
+  .scroll-story h2 {
+    height: auto;
+    font-size: 56px;
+  }
+
+  .story-word {
+    position: static;
+    display: block;
+    opacity: 1;
+    transform: none;
+  }
+
+  .story-notes,
+  .story-portrait,
+  .story-progress {
+    display: none;
+  }
+
   .portrait-wrap,
   .project-visual {
     translate: none;
@@ -747,8 +942,31 @@ footer div {
     transform: none;
   }
 
+  .scroll-story {
+    height: auto;
+  }
+
+  .scroll-story-stage {
+    position: relative;
+    min-height: 100vh;
+  }
+
+  .story-progress {
+    display: none;
+  }
+
   .portrait-wrap,
-  .project-visual {
+  .project-visual,
+  .story-portrait {
     translate: none;
+    transform: none;
+  }
+
+  .story-word,
+  .story-note {
+    position: static;
+    display: block;
+    opacity: 1;
+    transform: none;
   }
 }
