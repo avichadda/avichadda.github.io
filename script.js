@@ -1,5 +1,22 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
+const musicMenu = document.querySelector(".music-split details");
+
+if (musicMenu) {
+  document.addEventListener("click", (event) => {
+    if (musicMenu.open && !musicMenu.contains(event.target)) {
+      musicMenu.open = false;
+    }
+  });
+
+  musicMenu.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      musicMenu.open = false;
+      musicMenu.querySelector("summary").focus();
+    }
+  });
+}
+
 const revealItems = document.querySelectorAll(".reveal");
 
 if ("IntersectionObserver" in window) {
