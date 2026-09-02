@@ -225,8 +225,10 @@ h1 {
   z-index: 10;
   width: max-content;
   min-width: 230px;
+  max-height: min(480px, 70vh);
   padding: 8px;
   border: 1px solid var(--ink);
+  overflow-y: auto;
   background: var(--white);
   box-shadow: 4px 4px 0 var(--ink);
 }
